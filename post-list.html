@@ -5,27 +5,29 @@
 <polymer-element name="post-list" attributes="show">
   <template>
     <style>
-    :host {
+    /*:host {
       display: block;
       width: 100%;
     }
     post-card {
       margin-bottom: 30px;
-    }
+    }*/
     </style>
 
     <post-service id="service" posts="{{posts}}"></post-service>
 
-    <div layout vertical center>
+    <div horizontal layout wrap style="width: 500px">
       <template repeat="{{post in posts}}">
-        <post-card
+        <core-image src="{{post.content.src}}" style="width:200px; height:200px;" sizing="cover">
+        </core-image>
+        <!-- <post-card
           favorite="{{post.favorite}}"
           on-favorite-tap="{{handleFavorite}}"
           hidden?="{{show == 'favorites' && !post.favorite}}">
-          <img src="{{post.avatar}}" width="70" height="70">
-          <h2>{{post.username}}</h2>
-          <p>{{post.text}}</p>
-        </post-card>
+          <img src="{{post.content.src}}" width="70" height="70">
+          <h2></h2>
+          <p>{{post.summary.$t}}</p>
+        </post-card> -->
       </template>
     </div>
   </template>
