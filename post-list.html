@@ -5,21 +5,51 @@
 <polymer-element name="post-list" attributes="show">
   <template>
     <style>
-    /*:host {
+    :host {
       display: block;
       width: 100%;
     }
     post-card {
       margin-bottom: 30px;
-    }*/
+    }
+
+    .card {
+      display: inline-block;
+      background: white;
+      box-sizing: border-box;
+      width: 100%;
+      height: 100%;
+      padding:2px;
+    }
+
+    image-card{
+      width: 200px;
+      height: 200px;
+      margin: 16px;
+      padding: 5px;
+      border-radius: 2px;
+    }
+
+    core-image {
+      width:100%;
+      height: 100%;
+    }
     </style>
 
     <post-service id="service" posts="{{posts}}"></post-service>
 
-    <div horizontal layout wrap style="width: 500px">
+    <div horizontal layout wrap>
       <template repeat="{{post in posts}}">
-        <core-image src="{{post.content.src}}" style="width:200px; height:200px;" sizing="cover">
-        </core-image>
+        <image-card>
+          <paper-shadow class="card" z="1">
+            <core-image
+              src="{{post.content.src}}"
+              sizing="cover"
+              preload
+              fade >
+            </core-image>
+          </paper-shadow>
+        <image-card>
         <!-- <post-card
           favorite="{{post.favorite}}"
           on-favorite-tap="{{handleFavorite}}"
