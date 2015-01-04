@@ -1,53 +1,8 @@
 <link rel="import" href="../components/polymer/polymer.html">
 <link rel="import" href="../components/core-ajax/core-ajax.html">
-<!--
-  `<post-service>` provides an API for a fake service --
-  _unquote_, the read-only social networking service!
 
-  Provides a very simple API: `posts` returns the list of posts.
-  `setFavorite` pretends to persist a user's favorite choice.
 
-  @element post-service
-  @demo
-  @homepage http://www.polymer-project.org/docs/start/tutorial.html
--->
-
-<!--
-  An array of post objects, with the following format:
-
-  <table border="0">
-    <tr>
-      <td><code>uid</code></td>
-      <td>Number</td>
-      <td>Unique ID for this post.</td>
-    </tr>
-     <tr>
-      <td><code>username</code></td>
-      <td>String</td>
-      <td>Poster's username.</td>
-    </tr>
-    <tr>
-      <td><code>avatar</code></td>
-      <td>String</td>
-      <td>URL for the user's avatar.</td>
-    </tr>
-    <tr>
-      <td><code>text</code></td>
-      <td>String</td>
-      <td>Post text.</td>
-    </tr>
-    <tr>
-      <td><code>favorite</code></td>
-      <td>Boolean</td>
-      <td>True if the current user favorited this post.</td>
-    </tr>
-  </table>
-
-  @attribute posts
-  @type Array
-  @default []
--->
-<polymer-element name="post-service" attributes="posts">
+<polymer-element name="post-service" attributes="posts albumid">
   <template>
     <style>
     :host {
@@ -56,7 +11,7 @@
     </style>
     <core-ajax id="ajax"
       auto
-      url="https://picasaweb.google.com/data/feed/api/user/111664409766092880224/albumid/5702010536228604337?alt=json"
+      url='https://picasaweb.google.com/data/feed/api/user/111664409766092880224/albumid/{{albumid}}?alt=json'
       on-core-response="{{postsLoaded}}"
       handleAs="json">
     </core-ajax>
@@ -81,7 +36,7 @@
         this.posts.push(image);
       }
 
-      console.log(this.posts);
+      //console.log(this.posts);
     },
     /**
      * Update the service with the current favorite value.
