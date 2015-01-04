@@ -50,8 +50,8 @@
 
   <script>
     Polymer({
-      handleClick: function(){
-        console.log('click handled');
+      handleClick: function(e, detail, sender){
+        console.log(sender.templateInstance.model.post.src);
       }
     });
   </script>
