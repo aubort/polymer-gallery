@@ -69,7 +69,18 @@
     postsLoaded: function() {
       // Make a copy of the loaded data
       //this.posts = this.$.ajax.response.slice(0);
-      this.posts = this.$.ajax.response.feed.entry
+      //this.posts = this.$.ajax.response.feed.entry
+      var entries = this.$.ajax.response.feed.entry;
+
+      for(var i = 0; i < entries.length; i++){
+        var image = {
+          "title": entries[i].title.$t,
+          "desc": entries[i].summary.$t,
+          "src": entries[i].content.src,
+        }
+        this.posts.push(image);
+      }
+
       console.log(this.posts);
     },
     /**

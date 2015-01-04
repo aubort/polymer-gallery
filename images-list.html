@@ -1,8 +1,7 @@
 <link rel="import" href="components/polymer/polymer.html">
 <link rel="import" href="post-service/post-service.html">
-<link rel="import" href="post-card.html">
 
-<polymer-element name="post-list" attributes="show">
+<polymer-element name="images-list" attributes="show">
   <template>
     <style>
     :host {
@@ -43,21 +42,13 @@
         <image-card>
           <paper-shadow class="card" z="1">
             <core-image
-              src="{{post.content.src}}"
+              src="{{post.src}}"
               sizing="cover"
               preload
               fade >
             </core-image>
           </paper-shadow>
         <image-card>
-        <!-- <post-card
-          favorite="{{post.favorite}}"
-          on-favorite-tap="{{handleFavorite}}"
-          hidden?="{{show == 'favorites' && !post.favorite}}">
-          <img src="{{post.content.src}}" width="70" height="70">
-          <h2></h2>
-          <p>{{post.summary.$t}}</p>
-        </post-card> -->
       </template>
     </div>
   </template>
