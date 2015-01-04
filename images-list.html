@@ -1,4 +1,5 @@
 <link rel="import" href="components/polymer/polymer.html">
+
 <link rel="import" href="post-service/post-service.html">
 
 <polymer-element name="images-list" attributes="show">
@@ -23,25 +24,35 @@
         width:100%;
         height: 100%;
       }
+      /*paper-ripple{
+        width:100%;
+        height: 100%;
+        border: 1px solid black;
+      }*/
     </style>
 
     <post-service id="service" posts="{{posts}}" albumid="5702010536228604337"></post-service>
 
     <div horizontal layout wrap>
       <template repeat="{{post in posts}}">
-        <paper-shadow z="1">
-          <core-image
-            src="{{post.src}}"
-            sizing="cover"
-            preload
-            fade >
-          </core-image>
-        </paper-shadow>
+          <paper-shadow z="1">
+              <core-image
+                src="{{post.src}}"
+                sizing="cover"
+                preload
+                fade >
+              </core-image>
+              <paper-ripple image="{{post.src}}" fit on-click="{{handleClick}}"></paper-ripple>
+          </paper-shadow>
       </template>
     </div>
   </template>
 
   <script>
-    Polymer();
+    Polymer({
+      handleClick: function(){
+        console.log('click handled');
+      }
+    });
   </script>
 </polymer-element>
