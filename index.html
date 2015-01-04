@@ -64,14 +64,14 @@
 
   <core-header-panel>
 
-    <core-toolbar>
+    <!-- <core-toolbar>
 
       <paper-tabs id="tabs" selected="all" self-end>
         <paper-tab name="all">All</paper-tab>
         <paper-tab name="favorites">Favorites</paper-tab>
       </paper-tabs>
 
-    </core-toolbar>
+    </core-toolbar> -->
 
     <div class="container" layout vertical center style="width:80%">
       <post-list show="all"></post-list>
@@ -80,12 +80,12 @@
   </core-header-panel>
 
   <script>
-  var tabs = document.querySelector('paper-tabs');
-  var list = document.querySelector('post-list');
-
-  tabs.addEventListener('core-select', function() {
-    list.show = tabs.selected;
-  });
+  // var tabs = document.querySelector('paper-tabs');
+  // var list = document.querySelector('post-list');
+  //
+  // tabs.addEventListener('core-select', function() {
+  //   list.show = tabs.selected;
+  // });
   </script>
 </body>
 
