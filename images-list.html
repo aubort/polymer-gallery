@@ -24,30 +24,86 @@
         width:100%;
         height: 100%;
       }
+      
+      .card {
+        height: 400px;
+        height: 400px;
+        border-radius: 3px;
+        text-align: start;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      
+      #details {
+        padding: 200px 10% 0;
+      }
     </style>
 
     <image-service id="service" images="{{images}}" albumid="5702010536228604337"></image-service>
-
-    <div horizontal layout wrap>
-      <template repeat="{{image in images}}">
-          <paper-shadow z="1">
-              <core-image
-                src="{{image.src}}"
-                sizing="cover"
-                preload
-                fade >
-              </core-image>
-              <paper-ripple image="{{image.src}}" fit on-click="{{handleClick}}"></paper-ripple>
-          </paper-shadow>
-      </template>
-    </div>
+    <core-animated-pages selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
+      <section>
+        <div horizontal layout wrap on-tap="{{transition}}">
+          <template repeat="{{image in images}}">
+              <paper-shadow z="1">
+                  <core-image
+                    src="{{image.src}}"
+                    sizing="cover"
+                    preload
+                    fade >
+                  </core-image>
+                  <paper-ripple image-id="{{image.src}}" fit image?="{{selectedImage === image }}"></paper-ripple>
+              </paper-shadow>
+          </template>
+        </div>
+      </section>
+      
+      <section id="details">
+        <div class="card" layout horizontal image-id="{{selectedImage.src}}" image on-tap="{{close}}">
+          <div class="card-left" hero-id="{{selectedAlbum.src}}-art" image></div>
+          <div class="card-right" flex>
+            <div layout horizontal center>
+              <div>
+                <div class="card-icon" style="background:{{selectedAlbum.color}};">asd</div>
+              </div>
+              <div flex>
+                <div class="card-album-title">{{selectedAlbum.album}}</div>
+                <div class="card-album-artist">{{selectedAlbum.artist}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+    </core-animated-pages>
   </template>
 
   <script>
     Polymer({
+      
+      
       handleClick: function(e, detail, sender){
         console.log(sender.templateInstance.model.image.src);
+      },
+      
+      page: 0,
+      
+      selectedImage: null,
+      
+      transition: function(e){
+        console.log(e.target.templateInstance.model.image);
+        if (this.page === 0 && e.target.templateInstance.model.image) {
+          this.selectedImage = e.target.templateInstance.model.image;
+          this.page = 1;
+        }
+      },
+      
+      close: function(e){
+        console.log("close");
+        this.page = 0;
+        this.selectedImage = null;
       }
+      
     });
   </script>
 </polymer-element>
