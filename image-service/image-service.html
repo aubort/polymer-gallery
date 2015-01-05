@@ -1,0 +1,38 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/core-ajax/core-ajax.html">
+
+
+<polymer-element name="image-service" attributes="images albumid">
+  <template>
+    <style>
+    :host {
+      display: none;
+    }
+    </style>
+    <core-ajax id="ajax"
+      auto
+      url='https://picasaweb.google.com/data/feed/api/user/111664409766092880224/albumid/{{albumid}}?alt=json'
+      on-core-response="{{imagesLoaded}}"
+      handleAs="json">
+    </core-ajax>
+  </template>
+  <script>
+  Polymer('image-service', {
+    created: function() {
+      this.images = [];
+    },
+    imagesLoaded: function() {
+      var entries = this.$.ajax.response.feed.entry;
+
+      for(var i = 0; i < entries.length; i++){
+        var image = {
+          "title": entries[i].title.$t,
+          "desc": entries[i].summary.$t,
+          "src": entries[i].content.src,
+        }
+        this.images.push(image);
+      }
+    }
+  });
+  </script>
+</polymer-element>
