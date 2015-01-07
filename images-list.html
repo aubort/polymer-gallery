@@ -26,13 +26,14 @@
       }
       
       .card {
-        height: 400px;
-        height: 400px;
+        width: 100%;
+        height: 500px;
         border-radius: 3px;
         /*text-align: start;*/
         /*overflow: hidden;*/
         background: #fff;
         box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border: 1px solid black;
       }
       
       #details, section {
@@ -96,15 +97,7 @@
         }else{
           this.page = 0;
         }
-      },
-      
-      close: function(e, detail, sender){
-        console.log("close");
-        //console.log(e.target.templateInstance);
-        this.page = 0;
-        this.selectedImage = null;
       }
-      
     });
   </script>
 </polymer-element>
