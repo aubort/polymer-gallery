@@ -8,6 +8,7 @@
       :host {
         display: block;
         width: 100%;
+        height:100%;
       }
 
       .chip {
@@ -27,7 +28,8 @@
       
       .card {
         width: 100%;
-        height: 500px;
+        display:block;
+        height: 100%;
         border-radius: 3px;
         /*text-align: start;*/
         /*overflow: hidden;*/
@@ -36,18 +38,18 @@
         border: 1px solid black;
       }
       
-      #details, section {
-        width:100%;
-        height:100%;
-        border: 1px black solid;
-      }
+      /*#details, section {*/
+      /*  width:100%;*/
+      /*  height:100%;*/
+      /*  border: 1px black solid;*/
+      /*}*/
     </style>
 
     <image-service id="service" images="{{images}}" albumid="5702010536228604337"></image-service>
     
     <core-animated-pages selected="{{page}}" transitions="cross-fade-all hero-transition" on-core-animated-pages-transition-end="{{complete}}">
       <section>
-        <div horizontal layout wrap hero-p on-tap="{{transition}}">
+        <div hero-p on-tap="{{transition}}">
           <template repeat="{{image in images}}">
             <div class="chip" hero-id="{{image.id}}" hero?="{{selectedImage === image.id }}">
               <!--<paper-shadow z="1" fit>-->{{image.id}}
@@ -65,7 +67,7 @@
       </section>
       
       <section id="details">
-        <div class="card" layout horizontal hero-id="{{selectedImage.id}}" hero on-tap="{{transition}}">
+        <div class="card" hero-id="{{selectedImage.id}}" hero on-tap="{{transition}}">
           <div>{{images[selectedImage].src}}</div>
           
           <!--<core-image-->
