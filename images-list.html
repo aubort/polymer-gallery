@@ -54,7 +54,11 @@
       <template repeat="{{image in images}}">
           <paper-shadow z="1">
               <core-image
-                src="{{image.src}}" >
+                src="{{image.src}}" 
+                sizing="cover"
+                preload
+                fade >
+
               </core-image>
               <paper-ripple image="{{image.src}}" fit on-tap="{{open}}"></paper-ripple>
           </paper-shadow>
