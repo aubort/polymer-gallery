@@ -78,33 +78,35 @@
       }
 
       .card {
+        width: 100%;
         height: 100%;
-        border-radius: 3px;
-        text-align: start;
-        overflow: hidden;
+        
+        /*border-radius: 3px;*/
+        /*text-align: start;*/
+        /*overflow: hidden;*/
         background: #fff;
-        box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        /*box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
         border: 1px solid black;
       }
 
-      .card-left {
-        width: 400px;
-      }
+      /*.card-left {*/
+      /*  width: 400px;*/
+      /*}*/
 
-      .card-right {
-        padding: 24px;
-      }
+      /*.card-right {*/
+      /*  padding: 24px;*/
+      /*}*/
 
-      .card-icon {
-        border-radius: 50%;
-        width: 60px;
-        height: 60px;
-        margin-right: 16px;
-      }
+      /*.card-icon {*/
+      /*  border-radius: 50%;*/
+      /*  width: 60px;*/
+      /*  height: 60px;*/
+      /*  margin-right: 16px;*/
+      /*}*/
 
-      .card-album-title {
-        font-size: 2em;
-      }
+      /*.card-album-title {*/
+      /*  font-size: 2em;*/
+      /*}*/
     </style>
 
     <core-animated-pages selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}" fit>
@@ -115,8 +117,8 @@
 
           <template repeat="{{items as item}}">
 
-            <div class="chip" hero-id="{{item.artist}}-{{item.album}}" hero?="{{selectedAlbum === item }}">
-              <div class="chip-top" style="background:{{item.color}};" hero-id="{{item.artist}}-{{item.album}}-art" hero?="{{selectedAlbum === item}}"></div>
+            <div class="chip" hero-id="{{selectedAlbum.id}}" hero?="{{selectedAlbum === item }}">
+              <div class="chip-top" style="background:{{item.color}};" hero-id="{{selectedAlbum.id}}-art" hero?="{{selectedAlbum === item}}"></div>
               <div class="chip-bottom">
                 <div class="chip-album-title">{{item.album}}</div>
                 <div class="chip-artist">{{item.artist}}</div>
@@ -128,9 +130,10 @@
         </div>
       </section>
 
-      <section id="details">
+      <section id="details" horizontal center-justified center layout>
 
-        <div class="card" horizontal center-justified center layout hero-id="{{selectedAlbum.artist}}-{{selectedAlbum.album}}" hero on-tap="{{transition}}">
+        <div class="card" horizontal center-justified center layout hero-id="{{selectedAlbum.id}}" hero 
+          on-tap="{{transition}}">
           blabla
           <!--<div class="card-left" style="background:{{selectedAlbum.color}};" hero-id="{{selectedAlbum.artist}}-{{selectedAlbum.album}}-art" hero></div>-->
           <!--<div class="card-right" flex>-->
@@ -158,18 +161,18 @@
       page: 0,
 
       items: [
-        { artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
-        { artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
-        { artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
-        { artist: 'Tycho', album: 'Awake', color: '#dc3c84' },
-        { artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
-        { artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
-        { artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
-        { artist: 'Tycho', album: 'Awake', color: '#dc3c84' },
-        { artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
-        { artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
-        { artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
-        { artist: 'Tycho', album: 'Awake', color: '#dc3c84' }
+        { id:1, artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
+        { id:2, artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
+        { id:3,artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
+        { id:4,artist: 'Tycho', album: 'Awake', color: '#dc3c84' },
+        { id:5,artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
+        { id:6,artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
+        { id:7, artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
+        { id:8, artist: 'Tycho', album: 'Awake', color: '#dc3c84' },
+        { id:9, artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
+        { id:10, artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
+        { id:11, artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
+        { id:12, artist: 'Tycho', album: 'Awake', color: '#dc3c84' }
       ],
 
       selectedAlbum: null,
@@ -186,8 +189,6 @@
 
   </script>
   </polymer-element>
-
-  <!--<div class="green"></div>-->
 
   <music-demo></music-demo>
 </body>
