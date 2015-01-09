@@ -23,28 +23,28 @@
       background: #f1f1f1;
     }
 
-    .green {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      height: 350px;
-      background: #70c26f;
-    }
+    /*.green {*/
+    /*  position: absolute;*/
+    /*  top: 0;*/
+    /*  right: 0;*/
+    /*  left: 0;*/
+    /*  height: 350px;*/
+    /*  background: #70c26f;*/
+    /*}*/
   </style>
 </head>
-<body>
+<body fullbleed>
 
-  <polymer-element name="music-demo">
-  <template>
+  <polymer-element name="music-demo" fit>
+  <template fit>
 
     <style>
       .chip-container {
-        position: absolute;
-        top: 275px;
-        right: 0;
-        left: 0;
-        text-align: center;
+        /*position: absolute;*/
+        /*top: 275px;*/
+        /*right: 0;*/
+        /*left: 0;*/
+        /*text-align: center;*/
       }
 
       .chip {
@@ -73,16 +73,18 @@
       }
 
       #details {
-        padding: 200px 10% 0;
+        /*padding: 200px 10% 0;*/
+        /*height:100%;*/
       }
 
       .card {
-        height: 400px;
+        height: 100%;
         border-radius: 3px;
         text-align: start;
         overflow: hidden;
         background: #fff;
         box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border: 1px solid black;
       }
 
       .card-left {
@@ -105,11 +107,11 @@
       }
     </style>
 
-    <core-animated-pages selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}">
+    <core-animated-pages selected="{{page}}" transitions="hero-transition" on-core-animated-pages-transition-end="{{complete}}" fit>
 
-      <section>
+      <section fit>
 
-        <div class="chip-container" hero-p on-tap="{{transition}}">
+        <div class="chip-container" hero-p on-tap="{{transition}}" fit>
 
           <template repeat="{{items as item}}">
 
@@ -158,6 +160,14 @@
         { artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
         { artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
         { artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
+        { artist: 'Tycho', album: 'Awake', color: '#dc3c84' },
+        { artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
+        { artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
+        { artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
+        { artist: 'Tycho', album: 'Awake', color: '#dc3c84' },
+        { artist: 'Tycho', album: 'Fragments', color: '#f4db33' },
+        { artist: 'Tycho', album: 'Past Prologue', color: '#972ff8' },
+        { artist: 'Tycho', album: 'Spectre', color: '#7dd6fe' },
         { artist: 'Tycho', album: 'Awake', color: '#dc3c84' }
       ],
 
@@ -176,7 +186,7 @@
   </script>
   </polymer-element>
 
-  <div class="green"></div>
+  <!--<div class="green"></div>-->
 
   <music-demo></music-demo>
 </body>
