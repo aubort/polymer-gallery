@@ -56,12 +56,12 @@
               <core-image
                 src="{{image.src}}" >
               </core-image>
-              <paper-ripple image="{{image.src}}" fit on-click="{{handleClick}}"></paper-ripple>
+              <paper-ripple image="{{image.src}}" fit on-tap="{{open}}"></paper-ripple>
           </paper-shadow>
       </template>
     </div>
     
-    <core-overlay id="card" backdrop horizontal layout center center-justified fit>
+    <core-overlay id="card" backdrop horizontal layout center center-justified fit on-tap="{{close}}">
         <img class="image" src="{{lastSelectedImage}}">
     </core-overlay>
   </template>
@@ -72,13 +72,17 @@
     Polymer({
       lastSelectedImage: null,
       
-      handleClick: function(e, detail, sender){
+      open: function(e, detail, sender){
         var image = sender.templateInstance.model.image;
         this.lastSelectedImage = image.src;
         this.$.card.toggle();
         // this.$.card.style.width=image.width;
         // this.$.card.style.height=image.height;
         console.log(image.width);
+      },
+      close: function(){
+        this.$.card.toggle();
+        this.lastSelectedImage = null;
       }
     });
   </script>
