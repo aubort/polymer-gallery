@@ -7,11 +7,11 @@
   }
 </style>
 
-<polymer-element name="images-list" attributes="show">
+<polymer-element name="images-list" attributes="show" fit>
   <template>
     <style>
       :host {
-        display: block;
+        display: inline-block;
         width: 100%;
       }
 
@@ -31,10 +31,18 @@
         border: 1px solid white;
       }
       #card {
-        /*width:300px;*/
-        /*height: 80%;*/*/
-        /*background-color: white;*/
+        /*max-height:80%;*/
+        /*display: block;*/
       }
+      
+    .image{
+      /*min-width: 300px;*/
+      /*min-height: 300px;*/
+      border: 3px solid white;
+      max-height:80%;
+      height: auto;
+      width: auto;
+    }
       
       
       
@@ -46,24 +54,15 @@
       <template repeat="{{image in images}}">
           <paper-shadow z="1">
               <core-image
-                src="{{image.src}}"
-                sizing="cover"
-                preload
-                fade >
+                src="{{image.src}}" >
               </core-image>
               <paper-ripple image="{{image.src}}" fit on-click="{{handleClick}}"></paper-ripple>
           </paper-shadow>
       </template>
     </div>
     
-    <core-overlay id="card" backdrop>
-      <div style="display: block; width:300px; height:500px">
-        <core-image
-                src="{{lastSelectedImage}}"
-                sizing="null"
-                preload
-                fade></core-image>
-      </div>
+    <core-overlay id="card" backdrop horizontal layout center center-justified fit>
+        <img class="image" src="{{lastSelectedImage}}">
     </core-overlay>
   </template>
   
@@ -74,10 +73,12 @@
       lastSelectedImage: null,
       
       handleClick: function(e, detail, sender){
-        var image = sender.templateInstance.model.image.src;
-        this.lastSelectedImage = image;
+        var image = sender.templateInstance.model.image;
+        this.lastSelectedImage = image.src;
         this.$.card.toggle();
-        console.log(image);
+        // this.$.card.style.width=image.width;
+        // this.$.card.style.height=image.height;
+        console.log(image.width);
       }
     });
   </script>
