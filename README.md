@@ -8,3 +8,5 @@ Demo
 ====
 
 You can check out a demo here: http://polymer-gallery.appspot.com/
+
+to be continued...
