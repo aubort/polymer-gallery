@@ -25,7 +25,6 @@
       var entries = this.$.ajax.response.feed.entry;
 
       for(var i = 0; i < entries.length; i++){
-        //console.log(entries[i]);
         var image = {
           "title": entries[i].title.$t,
           "desc": entries[i].summary.$t,
@@ -34,7 +33,6 @@
           "height": entries[i].gphoto$height.$t
         }
         this.images.push(image);
-        console.log(this.images);
       }
     }
   });
