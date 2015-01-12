@@ -1,0 +1,17 @@
+<polymer-element name="app-globals">
+  <script>
+  (function() {
+    // these variables are shared by all instances of app-globals
+    var userid = '111664409766092880224';
+    var albumid = '5702010536228604337';
+
+    Polymer({
+       ready: function() {
+         // copy global values into instance properties
+         this.userid = userid;
+         this.albumid = albumid;
+       }
+    });
+  })();
+  </script>
+</polymer-element>

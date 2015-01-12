@@ -2,7 +2,7 @@
 <link rel="import" href="../components/core-ajax/core-ajax.html">
 
 
-<polymer-element name="image-service" attributes="images albumid">
+<polymer-element name="image-service" attributes="images albumid userid">
   <template>
     <style>
     :host {
@@ -11,7 +11,7 @@
     </style>
     <core-ajax id="ajax"
       auto
-      url='https://picasaweb.google.com/data/feed/api/user/111664409766092880224/albumid/{{albumid}}?alt=json'
+      url='https://picasaweb.google.com/data/feed/api/user/{{userid}}/albumid/{{albumid}}?alt=json'
       on-core-response="{{imagesLoaded}}"
       handleAs="json">
     </core-ajax>
@@ -25,16 +25,14 @@
       var entries = this.$.ajax.response.feed.entry;
 
       for(var i = 0; i < entries.length; i++){
-        //console.log(entries[i]);
         var image = {
           "title": entries[i].title.$t,
           "desc": entries[i].summary.$t,
           "src": entries[i].content.src,
-          "width": entries[i].gphoto$width.$t+"px",
-          "height": entries[i].gphoto$height.$t+"px"
+          "width": entries[i].gphoto$width.$t,
+          "height": entries[i].gphoto$height.$t
         }
         this.images.push(image);
-        console.log(this.images);
       }
     }
   });
