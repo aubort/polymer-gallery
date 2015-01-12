@@ -16,13 +16,13 @@ Getting Started
 Get the code by cloning the code repository on your local machine
 
 ```
-	git clone https://github.com/aubort/polymer-gallery.git
+	$ git clone https://github.com/aubort/polymer-gallery.git
 ```
 
 Go to the new repository and start a HTTP server using python
 
 ```
-	python -m SimpleHTTPServer
+	$ python -m SimpleHTTPServer
 ```
 You should see the following output on the console. If you are having trouble with the python simple http server, check out the doc here. 
 https://docs.python.org/2/library/simplehttpserver.html#module-SimpleHTTPServer
@@ -34,3 +34,17 @@ https://docs.python.org/2/library/simplehttpserver.html#module-SimpleHTTPServer
 Point your browser to http://localhost:8000 
 
 That’s it, you should be seeing the polymer-gallery!
+
+Configure
+============
+
+The gallery can be configured using the `app-globals.html` file. 
+In order to display the album of your choice, you will need to replace the `userid` and `albumid` variables with the album id and user id of the album you want to display. 
+Typically, a valid url will look like this:
+```html
+https://picasaweb.google.com/data/feed/api/user/<userid>/albumid/<albumid>?alt=json
+```
+
+From there, the `<core-ajax>` component in the `image-service.html`will make a call to the rest service and return a json object to the image service - which then will process the response.
+
+ 
