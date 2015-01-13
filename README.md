@@ -39,11 +39,26 @@ Configure
 ============
 
 The gallery can be configured using the `app-globals.html` file. 
-In order to display the album of your choice, you will need to replace the `userid` and `albumid` variables with the album id and user id of the album you want to display. 
+In order to display the album of your choice, you will need to replace the 
+`userid` and `albumid` variables with the album id and user id of the album 
+you want to display. 
 Typically, a valid url will look like this:
-```html
+
+```
 https://picasaweb.google.com/data/feed/api/user/<userid>/albumid/<albumid>?alt=json
 ```
+
+How to find the correct `userid` and `albumid`:
+
+Go to Google Plus and then to the album you want to use. The URL should look like this: 
+
+<pre>
+https://plus.google.com/photos/<u>111664409766092880224</u>/albums/<b>5702010536228604337</b>
+</pre>
+The underlined part is the `userid` and the bold part is the `albumid`.
+
+
+
 
 From there, the `<core-ajax>` component in the `image-service.html`will make a call to the rest service and return a json object to the image service - which then will process the response.
 

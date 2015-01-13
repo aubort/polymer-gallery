@@ -18,13 +18,29 @@
   </template>
   <script>
   Polymer('image-service', {
+    
+     /** 
+     * Is triggered when the element is created.
+     * @method created
+     */
     created: function() {
+      //  initializes the images collection
       this.images = [];
     },
     
+     /** 
+     * Creates a collection of 'image' objects.
+     * @method imagesLoaded
+     */
     imagesLoaded: function() {
+      
+      // Assign the result of the ajax call made by the core-ajax element
       var entries = this.$.ajax.response.feed.entry;
 
+      // 
+      /* Loop through the entries and for each of them create an object and 
+      *  adds it to the images collection
+      */
       for(var i = 0; i < entries.length; i++){
         var image = {
           "title": entries[i].title.$t,
